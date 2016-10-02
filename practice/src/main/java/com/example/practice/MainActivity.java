@@ -19,10 +19,21 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onClick(View view) {
-        /*if (view == findViewById(R.id.ok_button))
+        switch (view.getId())
         {
-            Toast.makeText(this, "ok", Toast.LENGTH_SHORT).show();
-        }*/
+            case R.id.ok_button:
+                String text = mUserName.getText().toString().trim();
+                if (text.length() > 0)
+                    Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
+                mUserName.setText(null);
+                break;
+            case R.id.cancel_button:
+                mUserName.setText(null);
+                break;
+            default:
+                Toast.makeText(this, "unknown command", Toast.LENGTH_SHORT).show();
+                break;
+        }
 
     }
 }
