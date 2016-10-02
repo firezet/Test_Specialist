@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">ButtonAppears</string>
+    <string name="main_button_text">add button</string>
+    <string name="new_button">new button #</string>
+</resources>
