@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Subway</string>
+    <string name="title_text">Харьковский Метрополитен</string>
+    <string name="pre_edit_text">Введите название станции</string>
+    <string name="edit_text_field_hint">Тракторный завод</string>
+    <string name="text_before_station_scroll">Или выберете из списка ниже:</string>
+    <string name="go_back_to_main_btn_txt"><![CDATA[<<<]]></string>
+    <string name="not_work_btn_txt"><![CDATA[>>>]]></string>
+    <string name="smile">Smile</string>
+</resources>
