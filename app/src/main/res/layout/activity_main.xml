@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.maksym.specialist.MainActivity">
+
+    <TextView
+        android:id="@+id/first_text_line"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Hello World!"
+        android:textSize="17sp" />
+
+    <EditText
+        android:id="@+id/edit_box"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/first_text_line"
+        android:background="@android:drawable/edit_text"
+        android:hint="text box..." />
+
+    <Button
+        android:id="@+id/clear_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/edit_box"
+        android:onClick="Clear_EditText_box"
+        android:text="clear" />
+
+    <Button
+        android:id="@+id/show_and_clear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/clear_button"
+        android:layout_alignParentRight="true"
+        android:text="show and clear"
+        android:textSize="12sp"
+        android:onClick="Show_and_Clear_EditText"/>
+
+    <Button
+        android:id="@+id/show_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/clear_button"
+        android:layout_toLeftOf="@id/show_and_clear"
+        android:text="show"
+        android:onClick="Show_text_from_EditText"/>
+</RelativeLayout>
