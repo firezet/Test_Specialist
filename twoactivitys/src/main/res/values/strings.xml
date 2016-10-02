@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">TwoActivitys</string>
+    <string name="header_text">Type your name below</string>
+    <string name="edit_text_hint">Enter your name here…</string>
+    <string name="button_text">Show new activity</string>
+    <string name="std_text">Nothing to show</string>
+    <string name="hello_text">Hello</string>
+    <string name="second_btn_click">call me</string>
+    <string name="number_to_call">do the order: 066-680-82-64</string>
+</resources>
