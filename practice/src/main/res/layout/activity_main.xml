@@ -10,40 +10,5 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.practice.MainActivity">
 
-    <TextView
-        android:id="@+id/header_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/header_text"
-        android:textSize="16sp"
-        />
 
-    <EditText
-        android:id="@+id/edit_box_field"
-        android:layout_below="@id/header_text"
-        android:background="@android:drawable/editbox_background"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/edit_box_hint"
-        />
-
-    <Button
-        android:id="@+id/cancel_button"
-        android:layout_below="@id/edit_box_field"
-        android:layout_alignParentRight="true"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@android:string/cancel"
-        android:onClick="onClick"
-        />
-
-    <Button
-        android:id="@+id/ok_button"
-        android:layout_below="@id/edit_box_field"
-        android:layout_toLeftOf="@id/cancel_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@android:string/ok"
-        android:onClick="onClick"
-        />
 </RelativeLayout>
