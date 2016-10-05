@@ -1,6 +1,7 @@
 package com.example.metropicker;
 
 import android.app.ListActivity;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -29,8 +30,10 @@ public class ListViewActivity extends ListActivity implements AdapterView.OnItem
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-        Toast.makeText(this, ((TextView) view).getText() + " p" + String.valueOf(i),
-                Toast.LENGTH_SHORT).show();
+        Intent intentResult = new Intent();
+        intentResult.putExtra("SelectedStation", ((TextView) view).getText().toString());
 
+        setResult(RESULT_OK, intentResult);
+        finish();
     }
 }
