@@ -15,8 +15,14 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+
         <activity android:name=".ListViewActivity">
+            <intent-filter>
+                <action android:name="com.example.metropicker.intent.action.PICK_METRO_STATION"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
         </activity>
+
     </application>
 
 </manifest>

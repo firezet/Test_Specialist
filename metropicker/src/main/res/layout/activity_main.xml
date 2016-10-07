@@ -12,34 +12,54 @@
     tools:context="com.example.metropicker.MainActivity">
 
     <Button
-        android:id="@+id/button_subway_selector"
-        android:layout_centerInParent="true"
+        android:id="@+id/call_to_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Select the station"
+        android:layout_centerHorizontal="true"
+        android:onClick="CallTo"
+        android:text="Call to"
+        />
+
+    <Button
+        android:id="@+id/start_activity_by_action_intent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/call_to_button"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:onClick="intentAction"
+        android:text="intent action"
+        />
+
+    <Button
+        android:id="@+id/button_subway_selector"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
         android:onClick="Select_The_Station"
+        android:text="Select the station"
         />
 
     <TextView
         android:id="@+id/selected_station_header"
-        android:layout_below="@id/button_subway_selector"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@id/button_subway_selector"
         android:layout_marginTop="10dp"
-        android:textSize="17sp"
         android:text="selected station:"
+        android:textSize="17sp"
         />
 
     <TextView
         android:id="@+id/selected_station"
-        android:layout_below="@id/selected_station_header"
-        android:layout_centerHorizontal="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@id/selected_station_header"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
-        android:textSize="17sp"
         android:text="unknown"
-        android:visibility="invisible"
-        />
+        android:textSize="17sp"
 
+        />
+<!-- android:visibility="invisible" -->
 </RelativeLayout>
