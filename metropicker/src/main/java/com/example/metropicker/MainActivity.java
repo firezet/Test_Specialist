@@ -25,6 +25,21 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(this, intent.getAction(), Toast.LENGTH_SHORT).show();
     }
 
+     public void CallTo(View view) {
+        Intent callToIntent = new Intent(Intent.ACTION_DIAL
+                , Uri.parse("tel: (067) 573 20 05"));
+        startActivity(callToIntent);
+    }
+
+    public void intentAction(View view) {
+        Intent intentByAction = new Intent(PICK_METRO_STATION);
+        if ( intentByAction.resolveActivity(getPackageManager()) != null ) {
+            startActivityForResult(intentByAction, CHOOSE_STATION);
+        } else {
+            Toast.makeText(this, "No activity for action", Toast.LENGTH_SHORT).show();
+        }
+    }
+
     public void Select_The_Station(View view) {
         Intent intent = new Intent(this, ListViewActivity.class);
         startActivityForResult(intent, CHOOSE_STATION);
@@ -43,22 +58,6 @@ public class MainActivity extends AppCompatActivity {
             super.onActivityResult(requestCode, resultCode, data);
         }
     }
-
-    public void CallTo(View view) {
-        Intent callToIntent = new Intent(Intent.ACTION_DIAL
-                , Uri.parse("tel: (067) 573 20 05"));
-        startActivity(callToIntent);
-    }
-
-    public void intentAction(View view) {
-        Intent intentByAction = new Intent(PICK_METRO_STATION);
-        if ( intentByAction.resolveActivity(getPackageManager()) != null ) {
-            startActivityForResult(intentByAction, CHOOSE_STATION);
-        } else {
-            Toast.makeText(this, "No activity for action", Toast.LENGTH_SHORT).show();
-        }
-    }
-
     @Override
     protected void onStart() {
         Toast.makeText(this, "Start Main", Toast.LENGTH_SHORT).show();
