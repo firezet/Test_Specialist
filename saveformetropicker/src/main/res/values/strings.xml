@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">SaveForMetroPicker</string>
+    <string name="selected_station_text_show">click button below to select the station</string>
+    <string name="button_select_the_station">select the station</string>
+    <string name="rbtn_holodnogorskaya">Холодногорско-заводская</string>
+    <string name="rbtn_alekseevskaya">Алексеевская</string>
+    <string name="rbtn_saltovskaya">Салтовская</string>
+</resources>

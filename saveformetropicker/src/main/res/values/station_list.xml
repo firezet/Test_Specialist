@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="holodnogorskaya">
+        <item>Индустриальная</item>
+        <item>Тракторный Завод</item>
+        <item>им. А.С. Масельского</item>
+        <item>Армейская</item>
+        <item>Дворец Спорта</item>
+        <item>Московский проспект</item>
+        <item>Завод им. Малышева</item>
+        <item>Спортивная</item>
+        <item>Проспект Гагарина</item>
+        <item>Площадь Конституции</item>
+        <item>Центральный Рынок</item>
+        <item>Южный Вокзал</item>
+        <item>Холодная Гора</item>
+    </string-array>
+
+    <string-array name="alekseevskaya">
+        <item>station 2</item>
+        <item>Тракторный Завод</item>
+        <item>им. А.С. Масельского</item>
+        <item>Армейская</item>
+        <item>Дворец Спорта</item>
+        <item>Московский проспект</item>
+        <item>Завод им. Малышева</item>
+        <item>Спортивная</item>
+        <item>Проспект Гагарина</item>
+        <item>Площадь Конституции</item>
+        <item>Центральный Рынок</item>
+        <item>Южный Вокзал</item>
+        <item>Холодная Гора</item>
+    </string-array>
+
+    <string-array name="saltovskaya">
+        <item>station 3</item>
+        <item>Тракторный Завод</item>
+        <item>им. А.С. Масельского</item>
+        <item>Армейская</item>
+        <item>Дворец Спорта</item>
+        <item>Московский проспект</item>
+        <item>Завод им. Малышева</item>
+        <item>Спортивная</item>
+        <item>Проспект Гагарина</item>
+        <item>Площадь Конституции</item>
+        <item>Центральный Рынок</item>
+        <item>Южный Вокзал</item>
+        <item>Холодная Гора</item>
+    </string-array>
+
+</resources>
