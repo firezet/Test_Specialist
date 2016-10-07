@@ -42,7 +42,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void Select_The_Station(View view) {
         Intent intent = new Intent(this, ListViewActivity.class);
-        startActivityForResult(intent, CHOOSE_STATION);
+        if ( intent.resolveActivity(getPackageManager()) != null )
+            startActivityForResult(intent, CHOOSE_STATION);
     }
 
     @Override
@@ -58,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
             super.onActivityResult(requestCode, resultCode, data);
         }
     }
+
     @Override
     protected void onStart() {
         Toast.makeText(this, "Start Main", Toast.LENGTH_SHORT).show();
