@@ -1,10 +1,11 @@
 package com.example.saveformetropicker;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.RadioButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
@@ -36,7 +37,14 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-
+        if ( resultCode == RESULT_OK) {
+            String stationNameResult = data.getStringExtra("ResultIntent");
+            ((TextView) findViewById(R.id.selected_station_text_show))
+                    .setText(stationNameResult);
+        } else {
+            super.onActivityResult(requestCode, resultCode, data);
+            Toast.makeText(this, "Station is not selected", Toast.LENGTH_SHORT).show();
+        }
     }
 
     public void onRButtonClicked(View view) {

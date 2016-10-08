@@ -15,7 +15,6 @@ public class StationList extends ListActivity implements AdapterView.OnItemClick
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
         Intent intent = getIntent();
         int requestCode = 1;
         requestCode = intent.getIntExtra("RQ", requestCode);
@@ -54,10 +53,11 @@ public class StationList extends ListActivity implements AdapterView.OnItemClick
     }
 
     @Override
-    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-        Toast.makeText(this,
-                ( (TextView) view).getText() + " item line - " + i,
-                Toast.LENGTH_SHORT).show();
+    public void onItemClick(AdapterView<?> adapterView, View view, int lineNumber, long l) {
+        Toast.makeText(this, ((TextView) view).getText(), Toast.LENGTH_SHORT).show();
+        Intent backIntent = new Intent();
+        backIntent.putExtra("ResultIntent", ((TextView) view).getText());
+        setResult(RESULT_OK, backIntent);
         finish();
     }
 }
