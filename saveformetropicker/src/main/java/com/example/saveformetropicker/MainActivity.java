@@ -7,7 +7,7 @@ import android.view.View;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static final int SELECT_STATION_REQUEST = 1;
+    private static final int HOLODNOGORSKAYA = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,8 +16,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void ButtonSelectTheStation(View view) {
-        Intent intent = new Intent(this, HolodnogorskayaActivity.class);
+        //Intent intent = new Intent(this, HolodnogorskayaActivity.class);
+        Intent intent = new Intent(this, StationList.class);
+        intent.putExtra("RQ", 1);
+        if ( intent.resolveActivity(getPackageManager()) != null )
+            startActivityForResult(intent, HOLODNOGORSKAYA);
+    }
 
-        startActivityForResult(intent, SELECT_STATION_REQUEST);
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
     }
 }

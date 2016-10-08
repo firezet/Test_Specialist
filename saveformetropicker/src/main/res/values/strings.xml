@@ -5,4 +5,5 @@
     <string name="rbtn_holodnogorskaya">Холодногорско-заводская</string>
     <string name="rbtn_alekseevskaya">Алексеевская</string>
     <string name="rbtn_saltovskaya">Салтовская</string>
+    <string name="not_identify">Not identify</string>
 </resources>

@@ -17,6 +17,8 @@
         </activity>
         <activity android:name=".HolodnogorskayaActivity">
         </activity>
+        <activity android:name=".StationList">
+        </activity>
     </application>
 
 </manifest>

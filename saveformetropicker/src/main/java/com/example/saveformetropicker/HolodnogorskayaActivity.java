@@ -1,10 +1,13 @@
 package com.example.saveformetropicker;
 
 import android.app.ListActivity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.TextView;
+import android.widget.Toast;
 
 public class HolodnogorskayaActivity extends ListActivity
         implements AdapterView.OnItemClickListener {
@@ -23,7 +26,11 @@ public class HolodnogorskayaActivity extends ListActivity
     }
 
     @Override
-    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-
+    public void onItemClick(AdapterView<?> adapterView, View view, int stringNumber, long l) {
+        Toast.makeText(this, stringNumber, Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent();
+        intent.putExtra("Station", ( ((TextView) view).getText()).toString() );
+        setResult(RESULT_OK, intent);
+        finish();
     }
 }
