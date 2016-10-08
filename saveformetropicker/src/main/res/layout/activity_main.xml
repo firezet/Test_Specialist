@@ -40,20 +40,25 @@
             android:id="@+id/rbutton_holodnogorskaya"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="17sp"
-            android:text="@string/rbtn_holodnogorskaya"/>
+            android:onClick="onRButtonClicked"
+            android:text="@string/rbtn_holodnogorskaya"
+            android:textSize="17sp"/>
+
         <RadioButton
             android:id="@+id/rbutton_alekseevskaya"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="17sp"
-            android:text="@string/rbtn_alekseevskaya"/>
+            android:onClick="onRButtonClicked"
+            android:text="@string/rbtn_alekseevskaya"
+            android:textSize="17sp"/>
+
         <RadioButton
             android:id="@+id/rbutton_saltovskaya"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="17sp"
-            android:text="@string/rbtn_saltovskaya"/>
+            android:onClick="onRButtonClicked"
+            android:text="@string/rbtn_saltovskaya"
+            android:textSize="17sp"/>
     </RadioGroup>
 
 </RelativeLayout>
