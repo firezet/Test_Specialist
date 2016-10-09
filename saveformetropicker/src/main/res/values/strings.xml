@@ -7,4 +7,5 @@
     <string name="rbtn_saltovskaya">Салтовская</string>
     <string name="not_identify">Not identify</string>
     <string name="button_last_station">last station</string>
+    <string name="no_saved_stations">no saved stations</string>
 </resources>

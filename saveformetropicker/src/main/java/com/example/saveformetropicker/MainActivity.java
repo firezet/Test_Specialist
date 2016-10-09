@@ -19,7 +19,6 @@ public class MainActivity extends AppCompatActivity {
 
     private SharedPreferences prefs;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
     public void ButtonSelectTheStation(View view) {
         Intent intent = new Intent(this, StationList.class);
         if ( mSelectedRadioButton == R.id.rbutton_holodnogorskaya
-                || mSelectedRadioButton == 0)
+                || mSelectedRadioButton == 0 )
             intent.putExtra("RQ", 1);
 
         if ( mSelectedRadioButton == R.id.rbutton_alekseevskaya )
@@ -46,13 +45,13 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         SharedPreferences.Editor editor = prefs.edit();
 
-        if ( resultCode == RESULT_OK) {
+        if ( resultCode == RESULT_OK ) {
             String stationNameResult = data.getStringExtra("ResultIntent");
             ((TextView) findViewById(R.id.selected_station_text_show))
-                .setText(stationNameResult);
+                    .setText(stationNameResult);
 
             prefs = getSharedPreferences(PREFS, MODE_PRIVATE);
-            editor.putString(KEY_STATION,stationNameResult);
+            editor.putString(KEY_STATION, stationNameResult);
             editor.apply();
         } else {
             super.onActivityResult(requestCode, resultCode, data);
@@ -62,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void ButtonLastStationLoad (View view) {
+    public void ButtonLastStationLoad(View view) {
         prefs = getSharedPreferences(PREFS, MODE_PRIVATE);
         String selectedStation = prefs.getString(KEY_STATION, null);
         if ( selectedStation != null ) {
@@ -72,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, selectedStation, Toast.LENGTH_SHORT).show();
         } else {
             ((TextView) findViewById(R.id.selected_station_text_show))
-                    .setText("no saved stations");
+                    .setText(R.string.no_saved_stations);
         }
     }
 
