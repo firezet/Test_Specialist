@@ -47,6 +47,10 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    public void ButtonLastStationLoad (View view) {
+        Toast.makeText(this, "Click", Toast.LENGTH_SHORT).show();
+    }
+
     public void onRButtonClicked(View view) {
         RadioButton radioButton = (RadioButton) view;
         mSelectedRadioButton = radioButton.getId();

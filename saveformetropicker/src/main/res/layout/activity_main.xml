@@ -29,7 +29,7 @@
         android:layout_centerHorizontal="true"
         android:onClick="ButtonSelectTheStation"
         android:text="@string/button_select_the_station"/>
-<!--
+
     <Button
         android:id="@+id/button_last_station_load"
         android:layout_width="wrap_content"
@@ -38,7 +38,7 @@
         android:layout_centerHorizontal="true"
         android:onClick="ButtonLastStationLoad"
         android:text="@string/button_last_station"/>
--->
+
     <RadioGroup
         android:id="@+id/radio_button_group"
         android:layout_width="match_parent"
