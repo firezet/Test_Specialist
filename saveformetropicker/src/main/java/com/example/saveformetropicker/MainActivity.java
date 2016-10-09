@@ -52,4 +52,10 @@ public class MainActivity extends AppCompatActivity {
         mSelectedRadioButton = radioButton.getId();
         Toast.makeText(this, radioButton.getText(), Toast.LENGTH_SHORT).show();
     }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Toast.makeText(this, "onDestroy", Toast.LENGTH_SHORT).show();
+    }
 }
