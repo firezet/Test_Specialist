@@ -6,6 +6,7 @@
     <string name="rbtn_alekseevskaya">Алексеевская</string>
     <string name="rbtn_saltovskaya">Салтовская</string>
     <string name="not_identify">Not identify</string>
-    <string name="button_last_station">last station</string>
+    <string name="button_last_station">last station #1</string>
+    <string name="button_last_station_2">last station #2</string>
     <string name="no_saved_stations">no saved stations</string>
 </resources>

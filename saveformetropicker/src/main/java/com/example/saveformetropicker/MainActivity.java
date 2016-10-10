@@ -19,72 +19,82 @@ public class MainActivity extends AppCompatActivity {
 
     private SharedPreferences prefs;
 
+    Storage mStorage;
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+    protected void onCreate ( Bundle savedInstanceState ) {
+        super.onCreate ( savedInstanceState );
+        setContentView ( R.layout.activity_main );
+
+        mStorage = new Storage ( this );
     }
 
-    public void ButtonSelectTheStation(View view) {
-        Intent intent = new Intent(this, StationList.class);
+    public void ButtonSelectTheStation ( View view ) {
+        Intent intent = new Intent ( this, StationList.class );
         if ( mSelectedRadioButton == R.id.rbutton_holodnogorskaya
                 || mSelectedRadioButton == 0 )
-            intent.putExtra("RQ", 1);
+            intent.putExtra ( "RQ", 1 );
 
         if ( mSelectedRadioButton == R.id.rbutton_alekseevskaya )
-            intent.putExtra("RQ", 2);
+            intent.putExtra ( "RQ", 2 );
 
         if ( mSelectedRadioButton == R.id.rbutton_saltovskaya )
-            intent.putExtra("RQ", 3);
+            intent.putExtra ( "RQ", 3 );
 
-        if ( intent.resolveActivity(getPackageManager()) != null )
-            startActivityForResult(intent, STATION_SELECT);
+        if ( intent.resolveActivity ( getPackageManager () ) != null )
+            startActivityForResult ( intent, STATION_SELECT );
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        prefs = getSharedPreferences(PREFS, MODE_PRIVATE);
-        SharedPreferences.Editor editor = prefs.edit();
+    protected void onActivityResult ( int requestCode, int resultCode, Intent data ) {
+        prefs = getSharedPreferences ( PREFS, MODE_PRIVATE );
+        SharedPreferences.Editor editor = prefs.edit ();
 
         if ( resultCode == RESULT_OK ) {
-            String stationNameResult = data.getStringExtra("ResultIntent");
-            ((TextView) findViewById(R.id.selected_station_text_show))
-                    .setText(stationNameResult);
+            String stationNameResult = data.getStringExtra ( "ResultIntent" );
+            ( (TextView) findViewById ( R.id.selected_station_text_show ) )
+                    .setText ( stationNameResult );
 
-            editor.putString(KEY_STATION, stationNameResult);
-            editor.apply();
+            editor.putString ( KEY_STATION, stationNameResult );
+            editor.apply ();
+
+            mStorage.savePrefs ( data );
         } else {
-            super.onActivityResult(requestCode, resultCode, data);
-            Toast.makeText(this, "Station is not selected", Toast.LENGTH_SHORT).show();
-            editor.remove(KEY_STATION);
-            editor.apply();
+            super.onActivityResult ( requestCode, resultCode, data );
+            Toast.makeText ( this, "Station is not selected", Toast.LENGTH_SHORT ).show ();
+            editor.remove ( KEY_STATION );
+            editor.apply ();
         }
     }
 
-    public void ButtonLastStationLoad(View view) {
-        prefs = getSharedPreferences(PREFS, MODE_PRIVATE);
-        String selectedStation = prefs.getString(KEY_STATION, null);
+    public void ButtonLastStationLoad ( View view ) {
+        prefs = getSharedPreferences ( PREFS, MODE_PRIVATE );
+        String selectedStation = prefs.getString ( KEY_STATION, null );
         if ( selectedStation != null ) {
-            ((TextView) findViewById(R.id.selected_station_text_show))
-                    .setText(selectedStation);
-            Toast.makeText(this, "restored from prefs", Toast.LENGTH_SHORT).show();
-            Toast.makeText(this, selectedStation, Toast.LENGTH_SHORT).show();
+            ( (TextView) findViewById ( R.id.selected_station_text_show ) )
+                    .setText ( selectedStation );
+            Toast.makeText ( this, "restored from prefs", Toast.LENGTH_SHORT ).show ();
+            Toast.makeText ( this, selectedStation, Toast.LENGTH_SHORT ).show ();
         } else {
-            ((TextView) findViewById(R.id.selected_station_text_show))
-                    .setText(R.string.no_saved_stations);
+            ( (TextView) findViewById ( R.id.selected_station_text_show ) )
+                    .setText ( R.string.no_saved_stations );
         }
-       // storage.loadPref();
     }
 
-    public void onRButtonClicked(View view) {
+    public void onRButtonClicked ( View view ) {
         RadioButton radioButton = (RadioButton) view;
-        mSelectedRadioButton = radioButton.getId();
-        Toast.makeText(this, radioButton.getText(), Toast.LENGTH_SHORT).show();
+        mSelectedRadioButton = radioButton.getId ();
+        Toast.makeText ( this, radioButton.getText (), Toast.LENGTH_SHORT ).show ();
     }
 
     @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        Toast.makeText(this, "onDestroy", Toast.LENGTH_SHORT).show();
+    protected void onDestroy () {
+        super.onDestroy ();
+        Toast.makeText ( this, "onDestroy", Toast.LENGTH_SHORT ).show ();
+    }
+
+    public void ButtonLastStationLoad_2 ( View view ) {
+        TextView fieldWithSelectedStation = (TextView) findViewById ( R.id.selected_station_text_show );
+        mStorage.loadPref ( fieldWithSelectedStation );
     }
 }

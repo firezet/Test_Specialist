@@ -35,9 +35,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/button_select_the_station"
-        android:layout_centerHorizontal="true"
         android:onClick="ButtonLastStationLoad"
         android:text="@string/button_last_station"/>
+
+    <Button
+        android:id="@+id/button_last_station_load_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/button_select_the_station"
+        android:onClick="ButtonLastStationLoad_2"
+        android:text="@string/button_last_station_2"/>
 
     <RadioGroup
         android:id="@+id/radio_button_group"

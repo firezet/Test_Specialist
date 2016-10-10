@@ -1,33 +1,43 @@
 package com.example.saveformetropicker;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.widget.TextView;
 import android.widget.Toast;
 
 /**
- * Created by Maksym on 09.10.2016.
+ * Created by Maksym Galushka on 09.10.2016.
  */
 
-public class Storage {
-    /*
-    private static final String PREFS = "PREFS";
-    private static final String KEY_STATION_SELECTED = "STATION";
+class Storage {
 
-    Context mContext;
-    SharedPreferences mPrefs;*/
+    private static final String PREFS2 = "PREFS2";
+    private static final String KEY_STATION_SELECTED2 = "STATION";
 
-    public Storage () {
-        //Toast.makeText(mContext, "save Context", Toast.LENGTH_SHORT).show();
-        int a = 1;
+    private Context mContext;
+    private SharedPreferences mPrefs;
+
+    Storage ( Context context ) {
+        mContext = context;
+        mPrefs = context.getSharedPreferences ( PREFS2, Context.MODE_PRIVATE );
     }
 
-    public void savePrefs () {
-        //Toast.makeText(mContext, "save Prefs", Toast.LENGTH_SHORT).show();
-        int b = 2;
+    void savePrefs ( Intent data ) {
+        SharedPreferences.Editor editor = mPrefs.edit ();
+        editor.putString ( KEY_STATION_SELECTED2, data.getStringExtra ( "ResultIntent" ) );
+        Toast.makeText ( mContext, "save + " + data.getStringExtra ( "ResultIntent" ), Toast.LENGTH_SHORT ).show ();
+        editor.apply ();
     }
 
-    public void loadPref () {
-        //Toast.makeText(mContext, "load Prefs", Toast.LENGTH_SHORT).show();
-        int c = 3;
+    void loadPref (TextView field) {
+        mPrefs = mContext.getSharedPreferences ( PREFS2, Context.MODE_PRIVATE );
+        String selectedStation = mPrefs.getString ( KEY_STATION_SELECTED2, null );
+        if ( selectedStation != null ) {
+            field.setText ( selectedStation );
+            Toast.makeText ( mContext, selectedStation, Toast.LENGTH_SHORT ).show ();
+        } else {
+            field.setText ( R.string.no_saved_stations );
+        }
     }
 }
