@@ -12,32 +12,37 @@ import android.widget.Toast;
 
 class Storage {
 
-    private static final String PREFS2 = "PREFS2";
-    private static final String KEY_STATION_SELECTED2 = "STATION";
+    private static final String PREFS = "PREFS";
+    private static final String KEY_STATION = "STATION";
 
     private Context mContext;
     private SharedPreferences mPrefs;
 
     Storage ( Context context ) {
         mContext = context;
-        mPrefs = context.getSharedPreferences ( PREFS2, Context.MODE_PRIVATE );
+        mPrefs = context.getSharedPreferences ( PREFS, Context.MODE_PRIVATE );
     }
 
     void savePrefs ( Intent data ) {
         SharedPreferences.Editor editor = mPrefs.edit ();
-        editor.putString ( KEY_STATION_SELECTED2, data.getStringExtra ( "ResultIntent" ) );
+        editor.putString ( KEY_STATION, data.getStringExtra ( "ResultIntent" ) );
         Toast.makeText ( mContext, "save + " + data.getStringExtra ( "ResultIntent" ), Toast.LENGTH_SHORT ).show ();
         editor.apply ();
     }
 
     void loadPref (TextView field) {
-        mPrefs = mContext.getSharedPreferences ( PREFS2, Context.MODE_PRIVATE );
-        String selectedStation = mPrefs.getString ( KEY_STATION_SELECTED2, null );
+        String selectedStation = mPrefs.getString ( KEY_STATION, null );
         if ( selectedStation != null ) {
             field.setText ( selectedStation );
             Toast.makeText ( mContext, selectedStation, Toast.LENGTH_SHORT ).show ();
         } else {
             field.setText ( R.string.no_saved_stations );
         }
+    }
+
+    void clearKey () {
+        SharedPreferences.Editor editor = mPrefs.edit ();
+        editor.remove ( KEY_STATION );
+        editor.apply ();
     }
 }

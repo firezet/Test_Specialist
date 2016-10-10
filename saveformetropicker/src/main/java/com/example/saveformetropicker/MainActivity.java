@@ -1,7 +1,6 @@
 package com.example.saveformetropicker;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -13,11 +12,6 @@ public class MainActivity extends AppCompatActivity {
 
     private static final short STATION_SELECT = 1;
     private int mSelectedRadioButton = 0;
-
-    private static final String PREFS = "PREFS";
-    static final String KEY_STATION = "selectedStation";
-
-    private SharedPreferences prefs;
 
     Storage mStorage;
 
@@ -47,38 +41,23 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onActivityResult ( int requestCode, int resultCode, Intent data ) {
-        prefs = getSharedPreferences ( PREFS, MODE_PRIVATE );
-        SharedPreferences.Editor editor = prefs.edit ();
-
         if ( resultCode == RESULT_OK ) {
             String stationNameResult = data.getStringExtra ( "ResultIntent" );
             ( (TextView) findViewById ( R.id.selected_station_text_show ) )
                     .setText ( stationNameResult );
 
-            editor.putString ( KEY_STATION, stationNameResult );
-            editor.apply ();
-
             mStorage.savePrefs ( data );
         } else {
             super.onActivityResult ( requestCode, resultCode, data );
             Toast.makeText ( this, "Station is not selected", Toast.LENGTH_SHORT ).show ();
-            editor.remove ( KEY_STATION );
-            editor.apply ();
+
+            mStorage.clearKey();
         }
     }
 
     public void ButtonLastStationLoad ( View view ) {
-        prefs = getSharedPreferences ( PREFS, MODE_PRIVATE );
-        String selectedStation = prefs.getString ( KEY_STATION, null );
-        if ( selectedStation != null ) {
-            ( (TextView) findViewById ( R.id.selected_station_text_show ) )
-                    .setText ( selectedStation );
-            Toast.makeText ( this, "restored from prefs", Toast.LENGTH_SHORT ).show ();
-            Toast.makeText ( this, selectedStation, Toast.LENGTH_SHORT ).show ();
-        } else {
-            ( (TextView) findViewById ( R.id.selected_station_text_show ) )
-                    .setText ( R.string.no_saved_stations );
-        }
+        TextView fieldWithSelectedStation = (TextView) findViewById ( R.id.selected_station_text_show );
+        mStorage.loadPref ( fieldWithSelectedStation );
     }
 
     public void onRButtonClicked ( View view ) {
@@ -91,10 +70,5 @@ public class MainActivity extends AppCompatActivity {
     protected void onDestroy () {
         super.onDestroy ();
         Toast.makeText ( this, "onDestroy", Toast.LENGTH_SHORT ).show ();
-    }
-
-    public void ButtonLastStationLoad_2 ( View view ) {
-        TextView fieldWithSelectedStation = (TextView) findViewById ( R.id.selected_station_text_show );
-        mStorage.loadPref ( fieldWithSelectedStation );
     }
 }
