@@ -9,21 +9,25 @@ import android.widget.Toast;
  */
 
 public class Storage {
+    /*
     private static final String PREFS = "PREFS";
     private static final String KEY_STATION_SELECTED = "STATION";
 
     Context mContext;
-    SharedPreferences mPrefs;
+    SharedPreferences mPrefs;*/
 
-    public void saveContext (Context context) {
-        Toast.makeText(mContext, "save Context", Toast.LENGTH_SHORT).show();
+    public Storage () {
+        //Toast.makeText(mContext, "save Context", Toast.LENGTH_SHORT).show();
+        int a = 1;
     }
 
-    public void savePrefs (Context context) {
-        Toast.makeText(mContext, "save Prefs", Toast.LENGTH_SHORT).show();
+    public void savePrefs () {
+        //Toast.makeText(mContext, "save Prefs", Toast.LENGTH_SHORT).show();
+        int b = 2;
     }
 
-    public void loadPref (Context context) {
-        Toast.makeText(mContext, "load Prefs", Toast.LENGTH_SHORT).show();
+    public void loadPref () {
+        //Toast.makeText(mContext, "load Prefs", Toast.LENGTH_SHORT).show();
+        int c = 3;
     }
 }

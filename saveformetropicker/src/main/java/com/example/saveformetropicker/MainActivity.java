@@ -43,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        prefs = getSharedPreferences(PREFS, MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
 
         if ( resultCode == RESULT_OK ) {
@@ -50,7 +51,6 @@ public class MainActivity extends AppCompatActivity {
             ((TextView) findViewById(R.id.selected_station_text_show))
                     .setText(stationNameResult);
 
-            prefs = getSharedPreferences(PREFS, MODE_PRIVATE);
             editor.putString(KEY_STATION, stationNameResult);
             editor.apply();
         } else {
@@ -73,6 +73,7 @@ public class MainActivity extends AppCompatActivity {
             ((TextView) findViewById(R.id.selected_station_text_show))
                     .setText(R.string.no_saved_stations);
         }
+       // storage.loadPref();
     }
 
     public void onRButtonClicked(View view) {
