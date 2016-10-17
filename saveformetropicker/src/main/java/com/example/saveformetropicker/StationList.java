@@ -16,7 +16,7 @@ public class StationList extends ListActivity implements AdapterView.OnItemClick
         super.onCreate(savedInstanceState);
 
         Intent intent = getIntent();
-        int requestCode = 1;
+        int requestCode = 0;
         requestCode = intent.getIntExtra("RQ", requestCode);
 
         String [] arrayStation;
@@ -48,7 +48,7 @@ public class StationList extends ListActivity implements AdapterView.OnItemClick
 
                     getListView().setAdapter(arrayAdapterHol);
                     getListView().setOnItemClickListener(this);
-                break;
+                    break;
         }
     }
 

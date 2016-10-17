@@ -8,4 +8,6 @@
     <string name="not_identify">Not identify</string>
     <string name="button_last_station">load last station</string>
     <string name="no_saved_stations">no saved stations</string>
+    <string name="menu_item_clear_text">clear</string>
+    <string name="menu_item_exit_text">exit</string>
 </resources>

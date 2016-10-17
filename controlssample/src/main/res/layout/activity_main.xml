@@ -1,23 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#c0c0c0"
-    android:orientation="vertical">
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="#c0c0c0"
+              android:orientation="vertical">
 
-    <Button
-        android:id="@+id/mySmileButton"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/smile_button"
-        android:onClick="onSmileButtonClick" />
+        android:orientation="horizontal"
+        android:weightSum="1">
+
+        <Button
+            android:id="@+id/mySmileButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/smile_button"
+            android:onClick="onSmileButtonClick"/>
+
+        <Switch
+            android:id="@+id/switcher_save_positions"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:gravity="center"
+            android:switchMinWidth="45dp"
+            android:text="save previous positions"
+            android:onClick="onSaveSettings"/>
+
+    </LinearLayout>
 
     <CheckBox
         android:id="@+id/myCheckBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="onCheckBoxClick"
-        android:text="Choose me" />
+        android:text="Choose me"/>
 
     <ToggleButton
         android:id="@+id/toggleButton"
@@ -25,7 +43,7 @@
         android:layout_height="wrap_content"
         android:onClick="onToggleButtonClicked"
         android:textOff="is OFF"
-        android:textOn="is ON" />
+        android:textOn="is ON"/>
 
     <RadioGroup
         android:layout_width="match_parent"
@@ -37,21 +55,21 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="onRadioButton"
-            android:text="dog" />
+            android:text="dog"/>
 
         <RadioButton
             android:id="@+id/radioCat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="onRadioButton"
-            android:text="cat" />
+            android:text="cat"/>
 
         <RadioButton
             android:id="@+id/radioRabbit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="onRadioButton"
-            android:text="rabbit" />
+            android:text="rabbit"/>
 
     </RadioGroup>
 
@@ -61,21 +79,22 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@android:drawable/edit_text"
-        android:hint="Enter a name" />
+        android:hint="Enter a name"/>
 
     <Button
         android:id="@+id/clearButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="onClearButton"
-        android:text="Clear" />
+        android:text="Clear"/>
 
     <Button
         android:id="@+id/downButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="button"
         android:layout_gravity="center_horizontal"
-        android:background="@drawable/down_button"/>
+        android:background="@drawable/down_button"
+        android:text="button"/>
+
 
 </LinearLayout>

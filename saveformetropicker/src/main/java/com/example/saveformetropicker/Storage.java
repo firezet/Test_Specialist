@@ -39,6 +39,12 @@ class Storage {
         }
     }
 
+    void saveRadioButton (int rbIndex) {
+        SharedPreferences.Editor editor = mPrefs.edit ();
+        editor.putInt (KEY_RADIO_BUTTON_INDEX, rbIndex);
+        editor.apply ();
+    }
+
     void loadStationField (TextView field) {
         String selectedStation = mPrefs.getString (KEY_STATION, null);
         if ( selectedStation != null ) {
@@ -49,17 +55,10 @@ class Storage {
         }
     }
 
-    void saveRadioButton (int rbIndex) {
-        SharedPreferences.Editor editor = mPrefs.edit ();
-        editor.putInt (KEY_RADIO_BUTTON_INDEX, rbIndex);
-        editor.apply ();
-        Toast.makeText (mContext, String.valueOf (rbIndex), Toast.LENGTH_SHORT).show ();
-    }
-
     void loadRadioButton (RadioGroup radioButtonGroup) {
-        int savedRadioButtonIndex = mPrefs.getInt (KEY_RADIO_BUTTON_INDEX, 0);
-        RadioButton radioButton = (RadioButton) radioButtonGroup
-                                                .getChildAt (savedRadioButtonIndex);
-        radioButton.setChecked (true);
-    }
+       int savedRadioButtonIndex = mPrefs.getInt (KEY_RADIO_BUTTON_INDEX, 0);
+            RadioButton radioButton = (RadioButton) radioButtonGroup
+                    .getChildAt (savedRadioButtonIndex);
+            radioButton.setChecked (true);
+       }
 }
