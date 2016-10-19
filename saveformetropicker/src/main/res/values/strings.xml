@@ -10,4 +10,5 @@
     <string name="no_saved_stations">no saved stations</string>
     <string name="menu_item_clear_text">clear</string>
     <string name="menu_item_exit_text">exit</string>
+    <string name="menu_item_send_text">send the station</string>
 </resources>

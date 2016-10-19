@@ -3,6 +3,9 @@ package com.example.saveformetropicker;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -78,5 +81,28 @@ public class MainActivity extends AppCompatActivity {
     protected void onDestroy () {
         super.onDestroy ();
         Toast.makeText (this, "onDestroy", Toast.LENGTH_SHORT).show ();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu (Menu menu) {
+        super.onCreateOptionsMenu (menu);
+        MenuInflater inflater = getMenuInflater ();
+        inflater.inflate (R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected (MenuItem item) {
+        switch ( item.getItemId () ) {
+            case R.id.item_clear:
+                ((TextView) findViewById (R.id.selected_station_text_show))
+                        .setText (R.string.selected_station_text_show);
+                return true;
+
+            case R.id.item_exit:
+                finish ();
+                return true;
+        }
+        return super.onOptionsItemSelected (item); // возвращаем если сами не сможем обработать
     }
 }

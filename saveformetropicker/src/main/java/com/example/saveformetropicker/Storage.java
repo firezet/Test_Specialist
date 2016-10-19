@@ -47,7 +47,7 @@ class Storage {
 
     void loadStationField (TextView field) {
         String selectedStation = mPrefs.getString (KEY_STATION, null);
-        if ( selectedStation != null ) {
+        if ( selectedStation != null) {
             field.setText (selectedStation);
             Toast.makeText (mContext, selectedStation, Toast.LENGTH_SHORT).show ();
         } else {
