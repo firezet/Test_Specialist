@@ -4,6 +4,10 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.ContextMenu;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -23,6 +27,9 @@ public class MainActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         Toast.makeText(this, intent.getAction(), Toast.LENGTH_SHORT).show();
+
+        View viewWithContextMenu = findViewById (R.id.selected_station_header);
+        registerForContextMenu (viewWithContextMenu);
     }
 
      public void CallTo(View view) {
@@ -58,6 +65,54 @@ public class MainActivity extends AppCompatActivity {
             stationResult.setText("Not selected station");
             super.onActivityResult(requestCode, resultCode, data);
         }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu (Menu menu) {
+        super.onCreateOptionsMenu (menu);
+
+        MenuInflater menuInflater = getMenuInflater ();
+        menuInflater.inflate (R.menu.main_menu, menu);
+        return true;
+    }
+
+    @Override
+    public void onCreateContextMenu (ContextMenu menu,
+                                     View v,
+                                     ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu (menu, v, menuInfo);
+
+        menu.add (0, Menu.FIRST, 0, "Toast Menu");
+        menu.add (0, Menu.FIRST+1, 0, "Exit Menu");
+        menu.setHeaderTitle ("Context Menu ");
+    }
+
+    @Override
+    public boolean onOptionsItemSelected (MenuItem item) {
+        switch ( item.getItemId () ) {
+            case R.id.toast:
+                Toast.makeText (this, "Call Toast", Toast.LENGTH_SHORT).show ();
+                return true;
+
+            case R.id.exit_menu:
+                finish ();
+                return true;
+        }
+        return super.onOptionsItemSelected (item);
+    }
+
+    @Override
+    public boolean onContextItemSelected (MenuItem item) {
+        switch ( item.getItemId () ) {
+            case 1:
+                Toast.makeText (this, "Well done", Toast.LENGTH_SHORT).show ();
+                return true;
+
+            case 2:
+                finish ();
+                return true;
+        }
+        return super.onContextItemSelected (item);
     }
 
     @Override
