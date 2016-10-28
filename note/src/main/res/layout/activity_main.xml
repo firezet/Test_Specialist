@@ -11,8 +11,17 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.note.MainActivity">
 
-    <TextView
+    <Button
+        android:id="@+id/okButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"/>
+        android:layout_alignParentRight="true"
+        android:text="@android:string/ok"/>
+    <EditText
+        android:id="@+id/inputField"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toLeftOf="@id/okButton"
+        android:hint="@string/hint"/>
+
 </RelativeLayout>
