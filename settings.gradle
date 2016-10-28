@@ -1,1 +1,1 @@
-include ':app', ':franchflag', ':relativelayoutsample', ':listviewsample', ':controlssample', ':buttonappears', ':twoactivitys', ':subway', ':practice', ':metropicker', ':saveformetropicker'
+include ':app', ':franchflag', ':relativelayoutsample', ':listviewsample', ':controlssample', ':buttonappears', ':twoactivitys', ':subway', ':practice', ':metropicker', ':saveformetropicker', ':note'
