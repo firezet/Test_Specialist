@@ -16,12 +16,21 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
+        android:onClick="onOkButtonClick"
         android:text="@android:string/ok"/>
+
     <EditText
         android:id="@+id/inputField"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_toLeftOf="@id/okButton"
+        android:background="@android:drawable/editbox_background"
         android:hint="@string/hint"/>
+
+    <ListView
+        android:id="@+id/notesList"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/okButton"/>
 
 </RelativeLayout>
