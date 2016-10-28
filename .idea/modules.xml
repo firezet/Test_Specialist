@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Specialist.iml" filepath="$PROJECT_DIR$/Specialist.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/buttonappears/buttonappears.iml" filepath="$PROJECT_DIR$/buttonappears/buttonappears.iml" />
+      <module fileurl="file://$PROJECT_DIR$/controlssample/controlssample.iml" filepath="$PROJECT_DIR$/controlssample/controlssample.iml" />
+      <module fileurl="file://$PROJECT_DIR$/franchflag/franchflag.iml" filepath="$PROJECT_DIR$/franchflag/franchflag.iml" />
+      <module fileurl="file://$PROJECT_DIR$/listviewsample/listviewsample.iml" filepath="$PROJECT_DIR$/listviewsample/listviewsample.iml" />
+      <module fileurl="file://$PROJECT_DIR$/metropicker/metropicker.iml" filepath="$PROJECT_DIR$/metropicker/metropicker.iml" />
+      <module fileurl="file://$PROJECT_DIR$/practice/practice.iml" filepath="$PROJECT_DIR$/practice/practice.iml" />
+      <module fileurl="file://$PROJECT_DIR$/relativelayoutsample/relativelayoutsample.iml" filepath="$PROJECT_DIR$/relativelayoutsample/relativelayoutsample.iml" />
+      <module fileurl="file://$PROJECT_DIR$/saveformetropicker/saveformetropicker.iml" filepath="$PROJECT_DIR$/saveformetropicker/saveformetropicker.iml" />
+      <module fileurl="file://$PROJECT_DIR$/subway/subway.iml" filepath="$PROJECT_DIR$/subway/subway.iml" />
+      <module fileurl="file://$PROJECT_DIR$/twoactivitys/twoactivitys.iml" filepath="$PROJECT_DIR$/twoactivitys/twoactivitys.iml" />
+    </modules>
+  </component>
+</project>

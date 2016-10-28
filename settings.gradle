@@ -1,0 +1,1 @@
+include ':app', ':franchflag', ':relativelayoutsample', ':listviewsample', ':controlssample', ':buttonappears', ':twoactivitys', ':subway', ':practice', ':metropicker', ':saveformetropicker'
