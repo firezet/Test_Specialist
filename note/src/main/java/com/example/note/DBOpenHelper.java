@@ -9,22 +9,22 @@ import android.database.sqlite.SQLiteOpenHelper;
  * Created by Maksym Galushka on 28.10.2016.
  */
 
-public class DBOpenHelper extends SQLiteOpenHelper {
+class DBOpenHelper extends SQLiteOpenHelper {
 
     private static final String DB_NAME = "notes.db";
     private static final int DB_VERSION = 1;
-    private static final String DB_TABLE = "notes";
-    private static final String COLUMN_NOTE = "note";
-    private static final String DB_CREATE = "create table"
+    static final String DB_TABLE = "notes";
+    static final String COLUMN_NOTE = "note";
+    private static final String DB_CREATE = "CREATE TABLE "
             + DB_TABLE
-            + "(_id INTEGER PRIMARY KEY AUTOINCREMENT,"
+            + " ( _id INTEGER PRIMARY KEY AUTOINCREMENT, "
             + COLUMN_NOTE
-            + "TEXT NOT NULL);";
+            + " TEXT NOT NULL);";
 
-    private Context mContext;
+    Context mContext;
 
 
-    public DBOpenHelper (Context context)
+    DBOpenHelper (Context context)
         /*,String name,SQLiteDatabase.CursorFactory factory,int version)*/ {
         super (context, DB_NAME, null, DB_VERSION);
         mContext = context;
@@ -40,6 +40,8 @@ public class DBOpenHelper extends SQLiteOpenHelper {
         ContentValues values = new ContentValues (1);
         for ( int i = 1; i < 6; i++ ) {
             values.put (COLUMN_NOTE, "Note #" + i);
+            // param null - обработчик, когда все поля null
+            // в этой версии такого нет, поскольку мы идентификатор сразу опеределяем.
             db.insert (DB_TABLE, null, values);
         }
     }
