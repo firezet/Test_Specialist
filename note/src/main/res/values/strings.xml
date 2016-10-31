@@ -1,4 +1,4 @@
 <resources>
     <string name="app_name">Note</string>
-    <string name="hint">type here...</string>
+    <string name="hint">type note here</string>
 </resources>

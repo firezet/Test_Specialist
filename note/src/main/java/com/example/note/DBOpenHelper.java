@@ -13,10 +13,11 @@ class DBOpenHelper extends SQLiteOpenHelper {
 
     private static final String DB_NAME = "notes.db";
     private static final int DB_VERSION = 1;
-    static final String DB_TABLE = "notes";
+    static final String TABLE_NAME = "notes";
     static final String COLUMN_NOTE = "note";
-    private static final String DB_CREATE = "CREATE TABLE "
-            + DB_TABLE
+    /*This is the standard command SQL*/
+    private static final String DB_CREATE = "CREATE TABLE " + TABLE_NAME
+            /* name of first column is "_id"*/
             + " ( _id INTEGER PRIMARY KEY AUTOINCREMENT, "
             + COLUMN_NOTE
             + " TEXT NOT NULL);";
@@ -42,7 +43,7 @@ class DBOpenHelper extends SQLiteOpenHelper {
             values.put (COLUMN_NOTE, "Note #" + i);
             // param null - обработчик, когда все поля null
             // в этой версии такого нет, поскольку мы идентификатор сразу опеределяем.
-            db.insert (DB_TABLE, null, values);
+            db.insert (TABLE_NAME, null, values);
         }
     }
 
