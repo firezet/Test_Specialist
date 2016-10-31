@@ -5,7 +5,11 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.ContextMenu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
@@ -39,12 +43,65 @@ public class MainActivity extends AppCompatActivity {
                 FROM, TO,
                 0);
         mNotesList.setAdapter (mSimpleCursorAdapter);
+        registerForContextMenu (mNotesList);
+        registerForContextMenu (mInputField);
     }
 
     @Override
-    protected void onStart () {
-        super.onStart ();
+    public void onCreateContextMenu (ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu (menu, v, menuInfo);
 
+        switch ( v.getId () ) {
+            case R.id.notesList:
+                MenuInflater inflaterDB = getMenuInflater ();
+                inflaterDB.inflate (R.menu.notes_menu, menu);
+                menu.setHeaderTitle ("DB Action");
+                break;
+            case R.id.inputField:
+                MenuInflater inflaterET = getMenuInflater ();
+                inflaterET.inflate (R.menu.edit_text_menu, menu);
+                menu.setHeaderTitle ("EditText");
+                break;
+            default:
+                Toast.makeText (this, "oops", Toast.LENGTH_SHORT).show ();
+        }
+    }
+
+    @Override
+    public boolean onContextItemSelected (MenuItem item) {
+        switch ( item.getItemId () ) {
+            case R.id.item_edit:
+                AdapterView.AdapterContextMenuInfo info2 =
+                        ( AdapterView.AdapterContextMenuInfo) item
+                                .getMenuInfo ();
+                updateNote (info2.id);
+                showNotes ();
+                return true;
+            case R.id.item_delete:
+                AdapterView.AdapterContextMenuInfo info =
+                        ( AdapterView.AdapterContextMenuInfo) item
+                            .getMenuInfo ();
+                deleteNote(info.id);
+                showNotes ();
+                return true;
+            default:
+                return super.onContextItemSelected (item);
+        }
+    }
+
+    private void deleteNote (long id) {
+        mSQLiteDb = (mSQLiteDb == null) ? mDBOpenHelper.getWritableDatabase () : mSQLiteDb;
+        mSQLiteDb.delete (DBOpenHelper.TABLE_NAME, "_id = " + id, null);
+    }
+
+    private void updateNote (long id) {
+        String newNote = mInputField.getText ().toString ().trim ();
+        if ( newNote.length () > 0 ) {
+            mSQLiteDb = ( mSQLiteDb == null ) ? mDBOpenHelper.getWritableDatabase () : mSQLiteDb;
+            ContentValues values = new ContentValues ();
+            values.put (DBOpenHelper.COLUMN_NOTE, newNote);
+            mSQLiteDb.update (DBOpenHelper.TABLE_NAME, values, "_id = " + id, null);
+        }
     }
 
     // открытие базы данных не делать в onCreate, ибо она будет задерживать загрузку приложения.
