@@ -30,6 +30,9 @@ public class MainActivity extends AppCompatActivity {
 
     SimpleCursorAdapter mSimpleCursorAdapter;
 
+    long mNoteId = -1;
+    private String mOldNote = null;
+
     @Override
     protected void onCreate (Bundle savedInstanceState) {
         super.onCreate (savedInstanceState);
@@ -71,17 +74,18 @@ public class MainActivity extends AppCompatActivity {
     public boolean onContextItemSelected (MenuItem item) {
         switch ( item.getItemId () ) {
             case R.id.item_edit:
-                AdapterView.AdapterContextMenuInfo info2 =
-                        ( AdapterView.AdapterContextMenuInfo) item
-                                .getMenuInfo ();
-                updateNote (info2.id);
-                showNotes ();
-                return true;
-            case R.id.item_delete:
                 AdapterView.AdapterContextMenuInfo info =
                         ( AdapterView.AdapterContextMenuInfo) item
+                                .getMenuInfo ();
+                mOldNote = getNoteById (info.id);   // save for future use
+                mInputField.setText (mOldNote);     // fill in input field
+                mNoteId = info.id;                  // save for future use
+                return true;
+            case R.id.item_delete:
+                AdapterView.AdapterContextMenuInfo info2 =
+                        ( AdapterView.AdapterContextMenuInfo) item
                             .getMenuInfo ();
-                deleteNote(info.id);
+                deleteNote(info2.id);
                 showNotes ();
                 return true;
             default:
@@ -89,19 +93,22 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    private String getNoteById (long id) {
+        mSQLiteDb = (mSQLiteDb == null) ? mDBOpenHelper.getWritableDatabase () : mSQLiteDb;
+        Cursor c = mSQLiteDb.query (DBOpenHelper.TABLE_NAME, FIELDS, "_id = " + id,
+                null, null, null, null);
+        String note = null;
+        if ( c != null) {
+            note = c.getString (
+                    c.getColumnIndexOrThrow (DBOpenHelper.COLUMN_NOTE));
+            c.close ();
+        }
+        return note;
+    }
+
     private void deleteNote (long id) {
         mSQLiteDb = (mSQLiteDb == null) ? mDBOpenHelper.getWritableDatabase () : mSQLiteDb;
         mSQLiteDb.delete (DBOpenHelper.TABLE_NAME, "_id = " + id, null);
-    }
-
-    private void updateNote (long id) {
-        String newNote = mInputField.getText ().toString ().trim ();
-        if ( newNote.length () > 0 ) {
-            mSQLiteDb = ( mSQLiteDb == null ) ? mDBOpenHelper.getWritableDatabase () : mSQLiteDb;
-            ContentValues values = new ContentValues ();
-            values.put (DBOpenHelper.COLUMN_NOTE, newNote);
-            mSQLiteDb.update (DBOpenHelper.TABLE_NAME, values, "_id = " + id, null);
-        }
     }
 
     // открытие базы данных не делать в onCreate, ибо она будет задерживать загрузку приложения.
