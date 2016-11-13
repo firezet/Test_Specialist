@@ -23,8 +23,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Toast.makeText(this, "Create Main", Toast.LENGTH_SHORT).show();
-
         Intent intent = getIntent();
         Toast.makeText(this, intent.getAction(), Toast.LENGTH_SHORT).show();
 
@@ -115,33 +113,4 @@ public class MainActivity extends AppCompatActivity {
         return super.onContextItemSelected (item);
     }
 
-    @Override
-    protected void onStart() {
-        Toast.makeText(this, "Start Main", Toast.LENGTH_SHORT).show();
-        super.onStart();
-    }
-
-    @Override
-    protected void onPause() {
-        Toast.makeText(this, "Pause Main", Toast.LENGTH_SHORT).show();
-        super.onPause();
-    }
-
-    @Override
-    protected void onRestart() {
-        Toast.makeText(this, "Restart Main", Toast.LENGTH_SHORT).show();
-        super.onRestart();
-    }
-
-    @Override
-    protected void onStop() {
-        Toast.makeText(this, "Stop Main", Toast.LENGTH_SHORT).show();
-        super.onStop();
-    }
-
-    @Override
-    protected void onDestroy() {
-        Toast.makeText(this, "Destroy Main", Toast.LENGTH_SHORT).show();
-        super.onDestroy();
-    }
 }

@@ -12,23 +12,23 @@ import android.widget.Toast;
 public class MainActivity extends ListActivity implements AdapterView.OnItemClickListener {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    protected void onCreate (Bundle savedInstanceState) {
+        super.onCreate (savedInstanceState);
 
-        Resources res = getResources();
-        String[] arrayStations = res.getStringArray(R.array.stations);
+        Resources res = getResources ();
+        String[] arrayStations = res.getStringArray (R.array.stations);
 
-        ArrayAdapter <String> arrayAdapter = new ArrayAdapter<>(this,
+        ArrayAdapter <String> arrayAdapter = new ArrayAdapter <> (this,
                 R.layout.list_item, arrayStations);
 
-        getListView().setAdapter(arrayAdapter);
-        getListView().setOnItemClickListener(this);
+        getListView ().setAdapter (arrayAdapter);
+        getListView ().setOnItemClickListener (this);
 
 
     }
 
     @Override
-    public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-        Toast.makeText(this, ((TextView) view).getText() + " p" + String.valueOf(position), Toast.LENGTH_SHORT).show();
+    public void onItemClick (AdapterView <?> adapterView, View view, int position, long l) {
+        Toast.makeText (this, ( (TextView) view ).getText () + " p" + String.valueOf (position), Toast.LENGTH_SHORT).show ();
     }
 }

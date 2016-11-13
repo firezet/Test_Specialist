@@ -6,6 +6,8 @@
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/buttonappears/buttonappears.iml" filepath="$PROJECT_DIR$/buttonappears/buttonappears.iml" />
       <module fileurl="file://$PROJECT_DIR$/controlssample/controlssample.iml" filepath="$PROJECT_DIR$/controlssample/controlssample.iml" />
+      <module fileurl="file://$PROJECT_DIR$/currencyrates/currencyrates.iml" filepath="$PROJECT_DIR$/currencyrates/currencyrates.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dialogsample/dialogsample.iml" filepath="$PROJECT_DIR$/dialogsample/dialogsample.iml" />
       <module fileurl="file://$PROJECT_DIR$/franchflag/franchflag.iml" filepath="$PROJECT_DIR$/franchflag/franchflag.iml" />
       <module fileurl="file://$PROJECT_DIR$/listviewsample/listviewsample.iml" filepath="$PROJECT_DIR$/listviewsample/listviewsample.iml" />
       <module fileurl="file://$PROJECT_DIR$/metropicker/metropicker.iml" filepath="$PROJECT_DIR$/metropicker/metropicker.iml" />

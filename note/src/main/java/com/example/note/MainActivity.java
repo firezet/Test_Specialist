@@ -3,8 +3,8 @@ package com.example.note;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.ContextMenu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
     SimpleCursorAdapter mSimpleCursorAdapter;
 
     long mNoteId = -1;
-    private String mOldNote = null;
+    private String mOldNote;
 
     @Override
     protected void onCreate (Bundle savedInstanceState) {
@@ -46,8 +46,9 @@ public class MainActivity extends AppCompatActivity {
                 FROM, TO,
                 0);
         mNotesList.setAdapter (mSimpleCursorAdapter);
+
         registerForContextMenu (mNotesList);
-        registerForContextMenu (mInputField);
+        registerForContextMenu (mInputField); // do nothing
     }
 
     @Override
@@ -60,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
                 inflaterDB.inflate (R.menu.notes_menu, menu);
                 menu.setHeaderTitle ("DB Action");
                 break;
-            case R.id.inputField:
+            case R.id.inputField: // do nothing
                 MenuInflater inflaterET = getMenuInflater ();
                 inflaterET.inflate (R.menu.edit_text_menu, menu);
                 menu.setHeaderTitle ("EditText");
@@ -75,17 +76,17 @@ public class MainActivity extends AppCompatActivity {
         switch ( item.getItemId () ) {
             case R.id.item_edit:
                 AdapterView.AdapterContextMenuInfo info =
-                        ( AdapterView.AdapterContextMenuInfo) item
+                        (AdapterView.AdapterContextMenuInfo) item
                                 .getMenuInfo ();
                 mOldNote = getNoteById (info.id);   // save for future use
                 mInputField.setText (mOldNote);     // fill in input field
-                mNoteId = info.id;                  // save for future use
+                mNoteId = info.id;                  // save old id for future use
                 return true;
             case R.id.item_delete:
                 AdapterView.AdapterContextMenuInfo info2 =
-                        ( AdapterView.AdapterContextMenuInfo) item
-                            .getMenuInfo ();
-                deleteNote(info2.id);
+                        (AdapterView.AdapterContextMenuInfo) item
+                                .getMenuInfo ();
+                deleteNote (info2.id);
                 showNotes ();
                 return true;
             default:
@@ -94,11 +95,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private String getNoteById (long id) {
-        mSQLiteDb = (mSQLiteDb == null) ? mDBOpenHelper.getWritableDatabase () : mSQLiteDb;
+        mSQLiteDb = ( mSQLiteDb == null ) ? mDBOpenHelper.getWritableDatabase () : mSQLiteDb;
         Cursor c = mSQLiteDb.query (DBOpenHelper.TABLE_NAME, FIELDS, "_id = " + id,
                 null, null, null, null);
+
         String note = null;
-        if ( c != null) {
+        if ( c != null ) {
+            c.moveToFirst ();
             note = c.getString (
                     c.getColumnIndexOrThrow (DBOpenHelper.COLUMN_NOTE));
             c.close ();
@@ -107,7 +110,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void deleteNote (long id) {
-        mSQLiteDb = (mSQLiteDb == null) ? mDBOpenHelper.getWritableDatabase () : mSQLiteDb;
+        mSQLiteDb = ( mSQLiteDb == null ) ? mDBOpenHelper.getWritableDatabase () : mSQLiteDb;
         mSQLiteDb.delete (DBOpenHelper.TABLE_NAME, "_id = " + id, null);
     }
 
@@ -121,7 +124,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void showNotes () {
         // add a check because we are have the same in onOkButtonClick()
-        mSQLiteDb = (mSQLiteDb == null) ? mDBOpenHelper.getWritableDatabase () : mSQLiteDb;
+        mSQLiteDb = ( mSQLiteDb == null ) ? mDBOpenHelper.getWritableDatabase () : mSQLiteDb;
         Cursor cursor = mSQLiteDb.query (DBOpenHelper.TABLE_NAME,
                 FIELDS,
                 null, null, null, null,
@@ -131,21 +134,32 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onOkButtonClick (View view) {
-        String newNote = mInputField.getText ().toString ().trim ();
-        if ( newNote.length () > 0 ) {
+        String note = mInputField.getText ().toString ().trim (); // get field
+
+        if ( note.length () > 0 ) {
             ContentValues values = new ContentValues (1);
-            values.put (DBOpenHelper.COLUMN_NOTE, newNote);
-            mSQLiteDb = mDBOpenHelper.getWritableDatabase ();
-            mSQLiteDb.insert (DBOpenHelper.TABLE_NAME, null, values);
+            values.put (DBOpenHelper.COLUMN_NOTE, note);
+            // we get db
+            mSQLiteDb = ( mSQLiteDb == null ) ? mDBOpenHelper.getWritableDatabase () : mSQLiteDb;
+
+            if ( mNoteId >= 0 ) { // if update
+                mSQLiteDb.update (mDBOpenHelper.TABLE_NAME, values,
+                        "_id = " + mNoteId, null);
+            } else { // if no old id - it is a new text
+                mSQLiteDb.insert (DBOpenHelper.TABLE_NAME, null, values);
+                showNotes ();
+            }
             showNotes ();
         }
+        mNoteId = -1; // delete old id
+        mOldNote = null; // delete old text and clear field
         mInputField.setText (null);
     }
 
     @Override
-    protected void onStop () {
+    protected void onStop () { // clear resources, that we do not need to use
         super.onStop ();
-        if (mSQLiteDb != null) {
+        if ( mSQLiteDb != null ) {
             mSQLiteDb.close ();
             mSQLiteDb = null;
             Toast.makeText (this, "DB closed", Toast.LENGTH_SHORT).show ();

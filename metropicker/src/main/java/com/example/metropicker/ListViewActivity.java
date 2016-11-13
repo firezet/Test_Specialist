@@ -30,8 +30,6 @@ public class ListViewActivity extends ListActivity implements AdapterView.OnItem
         getListView().setAdapter(arrayAdapter);
         getListView().setOnItemClickListener(this);
 
-        Toast.makeText(this, "Create List", Toast.LENGTH_SHORT).show();
-
         Intent intent = getIntent();
         Toast.makeText(this, intent.getAction(), Toast.LENGTH_SHORT).show();
     }
@@ -45,33 +43,4 @@ public class ListViewActivity extends ListActivity implements AdapterView.OnItem
         finish();
     }
 
-    @Override
-    protected void onStart() {
-        Toast.makeText(this, "Start List", Toast.LENGTH_SHORT).show();
-        super.onStart();
-    }
-
-    @Override
-    protected void onPause() {
-        Toast.makeText(this, "Pause List", Toast.LENGTH_SHORT).show();
-        super.onPause();
-    }
-
-    @Override
-    protected void onRestart() {
-        Toast.makeText(this, "Restart List", Toast.LENGTH_SHORT).show();
-        super.onRestart();
-    }
-
-    @Override
-    protected void onStop() {
-        Toast.makeText(this, "Stop List", Toast.LENGTH_SHORT).show();
-        super.onStop();
-    }
-
-    @Override
-    protected void onDestroy() {
-        Toast.makeText(this, "Destroy List", Toast.LENGTH_SHORT).show();
-        super.onDestroy();
-    }
 }
