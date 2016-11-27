@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">DialogSample</string>
+    <string name="app_name">Sample Receiver</string>
     <string name="text_button1">Select Your Search Engine</string>
     <string name="text_button2">Select Your Search Engine Again</string>
     <string name="title_dialog1">Select search engine</string>

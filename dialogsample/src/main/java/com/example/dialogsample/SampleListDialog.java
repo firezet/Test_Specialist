@@ -20,7 +20,7 @@ public class SampleListDialog extends DialogFragment {
         mContext = c;
     }
 
-    final static CharSequence[] COLORS = {"Red", "Green", "Blue",};
+    final CharSequence[] COLORS = {"Red", "Green", "Blue",};
 
     @Override
     public Dialog onCreateDialog (Bundle savedInstanceState) {

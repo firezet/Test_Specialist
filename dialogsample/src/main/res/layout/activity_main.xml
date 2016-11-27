@@ -12,31 +12,61 @@
     tools:context="com.example.dialogsample.MainActivity">
 
     <Button
-        android:id="@+id/btn_checkbox_dialog"
+        android:id="@+id/btn_simple_dialog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="onSimpleDialog"
+        android:text="Simple Dialog"/>
+
+    <Button
+        android:id="@+id/btn_list_dialog"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:onClick="onCheckboxDialog"
-        android:text="Checkbox Dialog"/>
+        android:onClick="onListDialog"
+        android:text="List"/>
 
     <Button
         android:id="@+id/btn_radio_dialog"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/btn_simple_dialog"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="51dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
         android:onClick="onRadioDialog"
         android:text="Radio Dialog"/>
 
     <Button
-        android:id="@+id/btn_simple_dialog"
+        android:id="@+id/btn_checkbox_dialog"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="14dp"
-        android:onClick="onSimpleDialog"
-        android:text="Simple Dialog"/>
+        android:layout_below="@id/btn_simple_dialog"
+        android:onClick="onCheckboxDialog"
+        android:text="Checkbox Dialog"/>
+
+    <Button
+        android:id="@+id/btn_custom_dialog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btn_simple_dialog"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:onClick="onCustomDialog"
+        android:text="Custom Dialog"/>
+
+    <Button
+        android:onClick="onClick"
+        android:id="@+id/selectButton1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="@string/text_button1"/>
+
+    <Button
+        android:onClick="onClick"
+        android:id="@+id/selectButton2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_below="@id/selectButton1"
+        android:text="@string/text_button2"/>
 </RelativeLayout>

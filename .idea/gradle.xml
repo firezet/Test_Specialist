@@ -19,9 +19,11 @@
             <option value="$PROJECT_DIR$/note" />
             <option value="$PROJECT_DIR$/practice" />
             <option value="$PROJECT_DIR$/relativelayoutsample" />
+            <option value="$PROJECT_DIR$/samplereceiver" />
             <option value="$PROJECT_DIR$/saveformetropicker" />
             <option value="$PROJECT_DIR$/subway" />
             <option value="$PROJECT_DIR$/twoactivitys" />
+            <option value="$PROJECT_DIR$/webviewsample" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

@@ -14,9 +14,11 @@
       <module fileurl="file://$PROJECT_DIR$/note/note.iml" filepath="$PROJECT_DIR$/note/note.iml" />
       <module fileurl="file://$PROJECT_DIR$/practice/practice.iml" filepath="$PROJECT_DIR$/practice/practice.iml" />
       <module fileurl="file://$PROJECT_DIR$/relativelayoutsample/relativelayoutsample.iml" filepath="$PROJECT_DIR$/relativelayoutsample/relativelayoutsample.iml" />
+      <module fileurl="file://$PROJECT_DIR$/samplereceiver/samplereceiver.iml" filepath="$PROJECT_DIR$/samplereceiver/samplereceiver.iml" />
       <module fileurl="file://$PROJECT_DIR$/saveformetropicker/saveformetropicker.iml" filepath="$PROJECT_DIR$/saveformetropicker/saveformetropicker.iml" />
       <module fileurl="file://$PROJECT_DIR$/subway/subway.iml" filepath="$PROJECT_DIR$/subway/subway.iml" />
       <module fileurl="file://$PROJECT_DIR$/twoactivitys/twoactivitys.iml" filepath="$PROJECT_DIR$/twoactivitys/twoactivitys.iml" />
+      <module fileurl="file://$PROJECT_DIR$/webviewsample/webviewsample.iml" filepath="$PROJECT_DIR$/webviewsample/webviewsample.iml" />
     </modules>
   </component>
 </project>
